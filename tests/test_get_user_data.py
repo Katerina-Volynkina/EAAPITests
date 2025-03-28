@@ -17,7 +17,6 @@ def test_list_users():
     for item in data:
         validate(item, USER_DATA_SCHEMA)
         assert item['email'].endswith(EMAIL_ENDS)
-        #assert str(item['id']) in item['avatar']
         assert item['avatar'].endswith(str(item['id']) + AVATAR_ENDS)
 
 def test_single_user():

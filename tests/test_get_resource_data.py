@@ -8,7 +8,6 @@ SINGLE_RESOURCE = 'api/unknown/2'
 NOT_FOUND_RESOURCE = 'api/unknown/23'
 COLOR_START = '#'
 
-
 def test_list_resource():
     response = httpx.get(BASE_URL + LIST_RESOURCE)
     assert  response.status_code == 200
