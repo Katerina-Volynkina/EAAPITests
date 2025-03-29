@@ -1,13 +1,12 @@
 import httpx
 from jsonschema import validate
-from core.contracts_resource import RESOURCE_DATA_SCHEMA
+from core.contracts import RESOURCE_DATA_SCHEMA
 
 BASE_URL = 'https://reqres.in/'
 LIST_RESOURCE = 'api/unknown'
 SINGLE_RESOURCE = 'api/unknown/2'
 NOT_FOUND_RESOURCE = 'api/unknown/23'
 COLOR_START = '#'
-
 
 def test_list_resource():
     response = httpx.get(BASE_URL + LIST_RESOURCE)

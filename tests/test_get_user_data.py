@@ -2,6 +2,7 @@ import httpx
 from jsonschema import validate
 from core.contracts import USER_DATA_SCHEMA
 
+
 BASE_URL = 'https://reqres.in/'
 LIST_USERS = 'api/users?page2'
 SINGLE_USER = 'api/users/2'
@@ -17,7 +18,6 @@ def test_list_users():
     for item in data:
         validate(item, USER_DATA_SCHEMA)
         assert item['email'].endswith(EMAIL_ENDS)
-        #assert str(item['id']) in item['avatar']
         assert item['avatar'].endswith(str(item['id']) + AVATAR_ENDS)
 
 def test_single_user():

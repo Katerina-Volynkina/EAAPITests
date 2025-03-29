@@ -8,5 +8,5 @@ RESOURCE_DATA_SCHEMA = {
         "pantone_value" : {"type": "string"}
     },
     "required": ["id", "name", "year", "color", "pantone_value"],
- }
+}
 
