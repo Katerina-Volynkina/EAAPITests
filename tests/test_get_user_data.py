@@ -2,6 +2,7 @@ import httpx
 from jsonschema import validate
 from core.contracts import USER_DATA_SCHEMA
 
+
 BASE_URL = 'https://reqres.in/'
 LIST_USERS = 'api/users?page2'
 SINGLE_USER = 'api/users/2'
