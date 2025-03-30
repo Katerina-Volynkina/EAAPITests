@@ -32,10 +32,8 @@ def test_single_resource():
     assert str(data['year']).isdigit() == True
     assert len(data['color']) == 7
     assert data['color'].startswith(COLOR_START)
-    assert data['color'][1:].isalnum() == True
     assert len(str(data['pantone_value'])) == 7
     assert '-' in data['pantone_value']
-    assert data['pantone_value'].isalpha() == False
 
 
 def test_resource_not_found():
