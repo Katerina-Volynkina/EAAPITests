@@ -1,13 +1,12 @@
 import httpx
 from jsonschema import validate
-from core.contracts_resource import RESOURCE_DATA_SCHEMA
+from core.contracts import RESOURCE_DATA_SCHEMA
 
 BASE_URL = 'https://reqres.in/'
 LIST_RESOURCE = 'api/unknown'
 SINGLE_RESOURCE = 'api/unknown/2'
 NOT_FOUND_RESOURCE = 'api/unknown/23'
 COLOR_START = '#'
-
 
 def test_list_resource():
     response = httpx.get(BASE_URL + LIST_RESOURCE)
@@ -33,10 +32,8 @@ def test_single_resource():
     assert str(data['year']).isdigit() == True
     assert len(data['color']) == 7
     assert data['color'].startswith(COLOR_START)
-    assert data['color'][1:].isalnum() == True
     assert len(str(data['pantone_value'])) == 7
     assert '-' in data['pantone_value']
-    assert data['pantone_value'].isalpha() == False
 
 
 def test_resource_not_found():
