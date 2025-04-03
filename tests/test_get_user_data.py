@@ -1,6 +1,7 @@
 import allure
 import httpx
 from jsonschema import validate
+import allure
 from core.contracts import USER_DATA_SCHEMA
 
 
@@ -40,5 +41,33 @@ def test_single_user():
 @allure.title('Удаление пользователя')
 def test_user_not_found():
     response = httpx.get(BASE_URL+ NOT_FOUND_USER)
-    with allure.step('Проверка статуса'):
+        with allure.step('Проверка статуса ответа'):
+        assert  response.status_code == 200
+        data = response.json()['data']
+
+    for item in data:
+        validate(item, USER_DATA_SCHEMA)
+        with allure.step('Проверка окончание email адреса'):
+            assert item['email'].endswith(EMAIL_ENDS)
+
+        with allure.step('Проверка наличия id в ссылке на аватарку'):
+            assert item['avatar'].endswith(str(item['id']) + AVATAR_ENDS)
+
+@allure.title('Проверка 1 пользователя')
+def test_single_user():
+    response = httpx.get(BASE_URL + SINGLE_USER)
+    with allure.step('Проверка статуса ответа'):
+        assert response.status_code == 200
+        data = response.json()['data']
+
+    with allure.step('Проверка окончание email адреса'):
+        assert data['email'].endswith(EMAIL_ENDS)
+
+    with allure.step('Проверка наличия id в ссылке на аватарку'):
+        assert data['avatar'].endswith(str(data['id']) + AVATAR_ENDS)
+
+@allure.title('Проверяем ситуацию, когда не найден ни один пользователь')
+def test_user_not_found():
+    response = httpx.get(BASE_URL+ NOT_FOUND_USER)
+    with allure.step('Проверка статуса ответа'):
         assert response.status_code == 404
