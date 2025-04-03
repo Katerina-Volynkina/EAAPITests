@@ -44,7 +44,6 @@ UPDATED_USER_SCHEMA = {
 }
 
 
-
 REGISTERED_USER_SCHEMA = {
     "type": "object",
     "properties": {
@@ -52,4 +51,12 @@ REGISTERED_USER_SCHEMA = {
         "token": {"type": "string"}
     },
     "required": ["id", "token"]
+}
+
+LOGIN_USER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "token": {"type": "string"}
+    },
+    "required": ["token"]
 }
