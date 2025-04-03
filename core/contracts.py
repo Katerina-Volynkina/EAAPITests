@@ -42,3 +42,12 @@ UPDATED_USER_SCHEMA = {
     },
     "required": ["name", "job"]
 }
+
+REGISTERED_USER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "id": {"type": "number"},
+        "token": {"type": "string"}
+    },
+    "required": ["id", "token"]
+}
