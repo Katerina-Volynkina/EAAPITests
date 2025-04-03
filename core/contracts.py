@@ -43,6 +43,8 @@ UPDATED_USER_SCHEMA = {
     "required": ["name", "job"]
 }
 
+
+
 REGISTERED_USER_SCHEMA = {
     "type": "object",
     "properties": {

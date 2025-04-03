@@ -1,5 +1,4 @@
 import allure
-
 import httpx
 from jsonschema import validate
 from core.contracts import USER_DATA_SCHEMA
